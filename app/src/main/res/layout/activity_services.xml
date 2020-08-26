@@ -28,4 +28,17 @@
         android:layout_height="wrap_content"
         android:text="unbind Service" />
 
+    <Button
+        android:id="@+id/jobservice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="job Service" />
+
+
+    <Button
+        android:id="@+id/WorkManagers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="WorkManager" />
+
 </LinearLayout>

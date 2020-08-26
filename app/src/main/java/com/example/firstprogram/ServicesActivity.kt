@@ -1,16 +1,28 @@
 package com.example.firstprogram
 
+import android.app.job.JobInfo
+import android.app.job.JobScheduler
 import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
+import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.work.Data
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
 import com.example.firstprogram.service.MyService
 import com.example.firstprogram.service.MyService.MyBinder
+import com.example.firstprogram.service.MyWork
+import com.example.firstprogram.service.YourIntentService
+import com.example.firstprogram.service.YourService
 import kotlinx.android.synthetic.main.activity_services.*
+import java.util.concurrent.TimeUnit
 
 
 class ServicesActivity : AppCompatActivity(), View.OnClickListener {
@@ -48,8 +60,12 @@ class ServicesActivity : AppCompatActivity(), View.OnClickListener {
         button2_stop_service.setOnClickListener(this)
         button3_bind_service.setOnClickListener(this)
         button4_unbind_service.setOnClickListener(this)
+
+        jobservice.setOnClickListener(this)
+        WorkManagers.setOnClickListener(this)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.button1_start_service -> {
@@ -70,6 +86,37 @@ class ServicesActivity : AppCompatActivity(), View.OnClickListener {
                     mBound = false
                 }
 
+            }
+            R.id.jobservice -> {
+                //start jobIntentService
+//                val startIntent = Intent()
+//                startIntent.putExtra("work", "work num:")
+//                YourIntentService.enqueueWork(this, startIntent)
+
+                //start jobService
+//                val scheduler1: JobScheduler = this.getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
+                val scheduler: JobScheduler = getSystemService(JobScheduler::class.java)
+                val builder = JobInfo.Builder(
+                    100,
+                    ComponentName(this, YourService::class.java)
+                )
+
+                builder.setOverrideDeadline(2000)
+                scheduler.schedule(builder.build())
+
+
+//                scheduler.cancel(100)
+            }
+            R.id.WorkManagers -> {
+
+                val data = Data.Builder().putString("putData","输入数据").build()  //创建需要传入的数据,注意不支持序列化数据传入
+
+                val oneTimeWorkRequest = OneTimeWorkRequest.Builder(MyWork::class.java)
+                    .setInitialDelay(10, TimeUnit.SECONDS)
+                    .setInputData(data)
+                    .build()
+
+                WorkManager.getInstance(this).enqueue(oneTimeWorkRequest)
             }
         }
     }
