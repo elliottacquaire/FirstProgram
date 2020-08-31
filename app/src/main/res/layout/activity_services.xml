@@ -4,6 +4,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <TextView
+        android:id="@+id/testview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="test" />
+
+    <Button
+        android:id="@+id/click"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="click test" />
+
+
     <Button
         android:id="@+id/button1_start_service"
         android:layout_width="match_parent"
@@ -40,5 +53,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="WorkManager" />
+
+    <Button
+        android:id="@+id/msagger"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="msagger" />
+
+
+    <Button
+        android:id="@+id/aidl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="aidl" />
 
 </LinearLayout>
