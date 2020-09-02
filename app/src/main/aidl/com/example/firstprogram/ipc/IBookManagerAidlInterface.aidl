@@ -11,7 +11,6 @@ package com.example.firstprogram.ipc;
   4 aidl文件以及实体类在两端都要有，并且同个包下
 */
 import com.example.firstprogram.ipc.Book;
-//import com.example.firstprogram.Book;
 
 interface IBookManagerAidlInterface {
     /**
@@ -22,7 +21,7 @@ interface IBookManagerAidlInterface {
 
 //            void addBook(in Book book);
 
-//            List<Book> getBooks();
+            List<Book> getBooks();
 
 //            void addBookAndNotify(in com.example.firstprogram.ipc.Book book);
 
