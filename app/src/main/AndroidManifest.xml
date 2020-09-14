@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.firstprogram">
-
-    <!--    job services   -->
+    <!-- job services -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-
-    <uses-permission android:name="com.example.firstprogram.permission.LOCAL"/>
-
+    <uses-permission android:name="com.example.firstprogram.permission.LOCAL" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ServicesActivity"/>
+        <activity android:name=".JavaDesignActivity"></activity>
+        <activity android:name=".ServicesActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,30 +24,28 @@
 
         <service android:name=".service.MyService" />
         <service android:name=".service.MyIntentService" />
-
-        <service android:name=".service.YourService"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
-        <service android:name=".service.YourIntentService"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
-
-
-        <service android:name=".service.MyAidlService"
+        <service
+            android:name=".service.YourService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".service.YourIntentService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".service.MyAidlService"
             android:enabled="true"
-            android:exported="true"
-            >
+            android:exported="true">
             <intent-filter>
-                <action android:name="com.example.firstprogram.service.MyAidlService"/>
+                <action android:name="com.example.firstprogram.service.MyAidlService" />
             </intent-filter>
         </service>
-
-        <service android:name=".service.MessengerService" android:exported="true"/>
-
+        <service
+            android:name=".service.MessengerService"
+            android:exported="true" />
         <service android:name=".service.BinderPoolService">
             <intent-filter>
-                <action android:name="com.example.firstprogram.service.BinderPoolService"/>
+                <action android:name="com.example.firstprogram.service.BinderPoolService" />
             </intent-filter>
         </service>
-
     </application>
 
 </manifest>

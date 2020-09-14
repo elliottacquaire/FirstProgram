@@ -12,12 +12,17 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
         setContentView(R.layout.activity_main)
 
         btn_service.setOnClickListener(this)
+        btn_javaDesign.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
         when(p0?.id){
             R.id.btn_service -> {
                 val intent = Intent(this,ServicesActivity().javaClass)
+                startActivity(intent)
+            }
+            R.id.btn_javaDesign -> {
+                val intent = Intent(this,JavaDesignActivity().javaClass)
                 startActivity(intent)
             }
         }
