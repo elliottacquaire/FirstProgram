@@ -6,10 +6,16 @@ import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.util.Log
+import android.util.SparseArray
 import android.view.View
 import com.example.firstprogram.design.*
 import com.example.firstprogram.handler.CustomHandler
 import com.example.firstprogram.handler.CustomThread
+import com.example.firstprogram.ipc.Book
+import com.example.firstprogram.ipc.MODE
+import com.example.firstprogram.ipc.MODE.Companion.MODE_LIST
+import com.example.firstprogram.ipc.MODE.Companion.MODE_TABS
+import com.example.firstprogram.ipc.PoolDateBean
 import kotlinx.android.synthetic.main.activity_java_design.*
 import java.lang.reflect.Proxy
 
@@ -18,6 +24,11 @@ class JavaDesignActivity : AppCompatActivity(), View.OnClickListener {
     private var customHandler =  CustomHandler()//UI线程到handler
 
     private var custom : CustomThread? = null
+
+    private var latLonList = mutableListOf<PoolDateBean>()
+    private var sparseArray = SparseArray<PoolDateBean>()
+
+    private var passTime = 0
 
     //创建handler
     val  handler = object: Handler() {
@@ -39,6 +50,10 @@ class JavaDesignActivity : AppCompatActivity(), View.OnClickListener {
 
         btn_javaDesign.setOnClickListener(this)
         btn_handler.setOnClickListener(this)
+        btn_pool_object.setOnClickListener(this)
+
+        setModel(MODE_TABS)
+//        setModel(5)
 
         Log.i("aaa","-----${customHandler.looper.thread}-------")
 
@@ -70,9 +85,6 @@ class JavaDesignActivity : AppCompatActivity(), View.OnClickListener {
                 userDor.save()
 //                userDor.delete("projects")
 
-
-
-
             }
             R.id.btn_handler -> {
 
@@ -99,6 +111,30 @@ class JavaDesignActivity : AppCompatActivity(), View.OnClickListener {
 
 
             }
+            R.id.btn_pool_object -> {
+                tv_time.start()
+//                latLonList.clear()
+                tv_time.setOnChronometerTickListener {
+                    passTime++
+                    var bean = PoolDateBean.obtain()
+                    bean?.id = passTime
+                    bean?.name = "json_jack mouth ${passTime}"
+                    bean?.let {
+                        latLonList.add(it)
+                    }
+                    tv_time.text = "$passTime --秒"
+                    Log.i("aaa","-TIME show-------$passTime------")
+                }
+                btn_pool_object.isEnabled = false
+            }
         }
+    }
+
+    private fun setModel(@MODE m : Int) {
+
+    }
+
+    private fun getS() : @MODE Int {
+        return  MODE_LIST
     }
 }
