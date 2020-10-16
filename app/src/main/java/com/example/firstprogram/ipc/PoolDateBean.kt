@@ -3,7 +3,7 @@ package com.example.firstprogram.ipc
 import androidx.core.util.Pools.SynchronizedPool
 
 
-
+//对象池 实现
 class PoolDateBean {
     var id: Int? = 0
 
