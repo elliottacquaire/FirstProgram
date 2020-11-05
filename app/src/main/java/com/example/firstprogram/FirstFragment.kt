@@ -46,8 +46,10 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        viewpage2.adapter = MyFragmentStateAdapter(activity, null)
+//        viewpage2.adapter = MyFragmentStateAdapter(activity!!, null)
 //        viewpage2.setPageTransformer(ZoomOutPageTransformer())
+
+        viewpage2.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
 
         //TabLayout与ViewPager2联动
         mLayoutMediator = TabLayoutMediator(tablayout,viewpage2){ tab, position ->
