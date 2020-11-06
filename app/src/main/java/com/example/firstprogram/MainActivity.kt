@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.launcher.ARouter
+import com.example.firstprogram.autosize.AutoSizeActivity
 import com.xiaomai.environmentswitcher.EnvironmentSwitchActivity
 import com.xiaomai.environmentswitcher.EnvironmentSwitcher
 import com.xiaomai.environmentswitcher.bean.EnvironmentBean
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() , View.OnClickListener, OnEnvironmentCh
         dispatch_touch_event.setOnClickListener(this)
         module.setOnClickListener(this)
         env_change.setOnClickListener(this)
+        autosize.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
@@ -78,6 +80,10 @@ class MainActivity : AppCompatActivity() , View.OnClickListener, OnEnvironmentCh
             }
             R.id.env_change -> {
                 EnvironmentSwitchActivity.launch(this)
+            }
+            R.id.autosize  -> {
+                val intent = Intent(this, AutoSizeActivity().javaClass)
+                startActivity(intent)
             }
         }
     }

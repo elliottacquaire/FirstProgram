@@ -4,4 +4,64 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="white">#ffffff</color>
+
+    <color name="porsche_pos_main_color">#2193FF</color>
+    <color name="tab_text_normal">#FF999999</color>
+    <color name="tab_text_selected">@color/porsche_pos_main_color</color>
+    <color name="tab_indicator_color">@color/porsche_pos_main_color</color>
+    <color name="card_view_background">#1A2023</color>
+    <color name="page_bg">#FF1A2023</color>
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_black">#0E1418</color>
+    <color name="color_999">#999999</color>
+    <color name="option_bg">#282E32</color>
+    <color name="empty_view_bg">#0E1418</color>
+
+    <color name="code_text_color">#3F99CC</color>
+
+    <color name="color_196">#196A99</color>
+
+    <color name="color_41">#414141</color>
+
+    <color name="audit_edt_bg">#6A6A6A</color>
+
+    <color name="option_given_bg">#00D5B9</color>
+    <color name="color_option_black">#000000</color>
+
+    <color name="chip_bg">#313639</color>
+
+    <color name="backlog_bg">#252C2F</color>
+    <color name="color_e7c">#E7C684</color>
+    <color name="backlog_carType">#2CA2CF</color>
+    <color name="backlog_item_shape">#293033</color>
+    <color name="toast_color">#4B5158</color>
+    <color name="contract_state_bg">#00D5B9</color>
+    <color name="contract_state">#FF9200</color>
+    <color name="color_252">#252B2E</color>
+    <color name="color_3c3">#3C3C3C</color>
+
+    <color name="circle_default">#D8D8D8</color>
+    <color name="color_979">#29979797</color>
+    <color name="color_DB2">#DB2940</color>
+
+    <color name="pop_bg">#b3000000</color>
+    <color name="color_2ca">#2CA2CF</color>
+    <color name="color_262">#262B2E</color>
+    <color name="color_252c">#252C2F</color>
+    <color name="color_white_8c">#8CFFFFFF</color>
+    <color name="color_1a2">#1A2023</color>
+
+    <color name="color_50e">#9c50E3C2</color>
+    <color name="color_9797">#979797</color>
+    <color name="color_9c2ca">#9c2CA2CF</color>
+
+    <color name="gps_bg">#4A4E51</color>
+    <color name="route_bg">#2193FF</color>
+
+    <color name="color_white_alpha">#62FFFFFF</color>
+    <color name="color_ff9">#FF9B00</color>
+    <color name="white_e6">#E6FFFFFF</color>
+    <color name="color_9698">#96989A</color>
+    <color name="color_f2f">#F2F2F2</color>
+
 </resources>

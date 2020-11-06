@@ -83,8 +83,11 @@ dependencies {
     implementation 'com.github.chrisbanes:PhotoView:2.1.4'
 //    implementation 'com.github.open-android:PhotoImageView:0.1.0'
 
-
+    //app 多URL环境切换
     implementation "com.xiaomai.environmentswitcher:environmentswitcher:1.5.2"
     kaptDebug "com.xiaomai.environmentswitcher:environmentswitcher-compiler:1.5.3"
     kaptRelease "com.xiaomai.environmentswitcher:environmentswitcher-compiler-release:1.5.3"
+
+    // Android 屏幕适配方案
+    implementation 'me.jessyan:autosize:1.2.1'
 }

@@ -15,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".pdf.PdfReaderActivity"/>
+        <activity android:name=".autosize.AutoSize1Activity"></activity>
+        <activity android:name=".autosize.AutoSizeActivity" />
+        <activity android:name=".pdf.PdfReaderActivity" />
         <activity android:name=".DispatchTouchEventActivity" />
         <activity android:name=".JavaDesignActivity" />
         <activity android:name=".ServicesActivity" />
@@ -51,6 +53,17 @@
                 <action android:name="com.example.firstprogram.service.BinderPoolService" />
             </intent-filter>
         </service>
+
+        <!-- 填写全局设计图尺寸 (单位 dp)，如果使用副单位，则可以直接填写像素尺寸，不需要再将像素转化为 dp-->
+        <!-- 如果您项目中的所有页面都只需要以高或宽中的一个作为基准进行适配的话, 那就只需要填写高或宽中的一个设计图尺寸即可 -->
+        <meta-data
+            android:name="design_width_in_dp"
+            android:value="375"/>
+        <meta-data
+            android:name="design_height_in_dp"
+            android:value="812"/>
+
+
     </application>
 
 </manifest>

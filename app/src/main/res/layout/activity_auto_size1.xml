@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:background="@color/page_bg"
+    >
+
+    <RelativeLayout
+        android:id="@+id/rel_gps_tips"
+        android:layout_marginTop="40dp"
+        android:background="@color/color_196"
+        android:alpha="0.5"
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+        <TextView
+            android:id="@+id/tv_tips"
+            android:textSize="13dp"
+            android:singleLine="true"
+            android:text="string/drive_off_gps_tips"
+            android:layout_centerVertical="true"
+            android:textColor="@color/color_white"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_toRightOf="@+id/img_gps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/img_gps"
+            android:src="@drawable/ic_route"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_userInfo"
+        android:textColor="@color/color_9698"
+        android:textSize="15.3sp"
+        android:layout_marginTop="115dp"
+        android:text="李准 先生 试乘试驾体验中…"
+        android:layout_marginStart="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_carType"
+        android:layout_below="@+id/tv_userInfo"
+        android:textColor="@color/color_white"
+        android:textSize="23sp"
+        android:layout_marginTop="10dp"
+        android:text="体验中…"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Chronometer
+        android:id="@+id/tv_time"
+        android:layout_below="@+id/tv_carType"
+        android:textColor="@color/color_f2f"
+        android:textSize="15.3sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:text="334"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_distance"
+        android:layout_below="@+id/tv_time"
+        android:textColor="@color/color_2ca"
+        android:textSize="71sp"
+        android:textStyle="bold"
+        android:layout_marginTop="60dp"
+        android:maxLines="1"
+        android:text="334"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:id="@+id/rel_gps"
+        android:background="@color/gps_bg"
+        android:layout_marginTop="60dp"
+        android:layout_below="@+id/tv_distance"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        >
+
+        <ImageView
+            android:layout_marginTop="-20dp"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/ic_icon_map"
+            android:layout_marginBottom="12dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"/>
+
+        <ImageView
+            android:layout_marginRight="11dp"
+            android:layout_toLeftOf="@+id/tv_gps"
+            android:src="@drawable/ic_route"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginRight="13dp"
+            android:id="@+id/tv_gps"
+            android:textSize="15sp"
+            android:text="GPS"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/img_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/img_right"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/ic_icon_calltoaction"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="结束"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="120dp"
+        android:textSize="13.3sp"
+        android:textColor="@color/color_white"
+        android:gravity="center"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/pos_btn_confirm_bg"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/tv_restart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="重新开始"
+        android:textSize="15.3sp"
+        android:textColor="@color/tab_text_selected"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="47dp"
+        android:layout_centerHorizontal="true"
+        />
+
+
+</RelativeLayout>
