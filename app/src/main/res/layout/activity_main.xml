@@ -34,4 +34,19 @@
         android:text="duo module transfl"
         />
 
+    <Button
+        android:id="@+id/env_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="env_change"
+        />
+
+    <Button
+        android:id="@+id/module1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="duo module transfl"
+        />
+
+
 </LinearLayout>

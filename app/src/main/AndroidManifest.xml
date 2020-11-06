@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".pdf.PdfReaderActivity"></activity>
+        <activity android:name=".pdf.PdfReaderActivity"/>
         <activity android:name=".DispatchTouchEventActivity" />
         <activity android:name=".JavaDesignActivity" />
         <activity android:name=".ServicesActivity" />
