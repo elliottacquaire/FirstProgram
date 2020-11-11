@@ -3,7 +3,8 @@
     package="com.example.mylibrary">
 
     <application>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity"
+            android:launchMode="singleTask"/>
     </application>
 
 </manifest>

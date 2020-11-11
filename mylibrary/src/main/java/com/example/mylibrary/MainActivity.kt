@@ -3,6 +3,7 @@ package com.example.mylibrary
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.mylibrary.downManager.FileDownloaderUtil
@@ -31,5 +32,10 @@ class MainActivity : AppCompatActivity()  , View.OnClickListener{
 
             }
         }
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        Log.d("aaaa","onNewIntent")
     }
 }
