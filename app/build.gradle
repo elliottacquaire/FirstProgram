@@ -22,6 +22,30 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        //微信（只适配armeabi）、qq（只适配armeabi）、王者荣耀（只适配armeabi-v7a）、百度地图（只适配armeabi）、大众点评（只适配armeabi）等
+        //仅有 armeabi： 微博，今日头条，淘宝，QQ，微信
+        //armeabi与 armeabi-v7a： UC 浏览器，Facebook、Twitter
+        //armeabi，armeabi-v7a，armeabi-x86：优酷，哔哩哔哩动画。
+        //7种类型全有：知乎
+        //下载App：Native Libs Monitor（豌豆荚上可以下载）
+
+        //armeabi-v7a ：armeabi-v7a向下兼容 armeabi
+        //arm64-v8a ： 能兼容 armeabi-v7a 和 armeabi
+        //x86_64 ： 兼容 x86
+        //mips64 ： 兼容 mips
+
+        //因为目前主流手机都支持armeabi-v7a，就算app支持到只支持armeabi这种架构的手机，
+        // app也未必能运行的起来，体验也未必好，算是app放弃也这些用户吧，再说使用只支持armeabi这种架构的手机估计年纪也大了，也不会使用到这个app；
+        //如果app适配了armeabi、 armeabi-v7a 、arm64-v8a三种cpu架构，以我的手机mate9为例， mate9支持 armeabi、 armeabi-v7a 、arm64-v8a，
+        // 那么app在找so文件时会从最新的一代的cpu 架构(arm64-v8a)找so文件,如果找不到会直接报错，不会再去armeabi-v7a 和armeabi里面找，一定要确保三个目录中的so库数目一样；
+        // 如果适配armeabi、 armeabi-v7a，mate9手机上app在找so文件时会从armeabi-v7a找对应so，没有就报错；如果只适配一种，那么手机只要支持这种cpu架构，就会去这个文件夹下找对应的so，找不到就报错，如果手机不支持这种cpu架构就报错
+        //项目中遇到的一种情况：默认情况下（不在gradle中设置ndk），某个测试机支持v8a，v7a，armeabi三种cpu架构；代码中只有armeabi和v7a两个包并且两个包内的so包完全相同；
+        // 在测试机上无论debug还是release测试都不会有问题；但是后续开发中集成了某个第三方arr后，打的包就会默认在v8a中找so文件，导致程序崩溃；所以建议开发时候一定要对cpu架构做适配；
+        ndk {
+            abiFilters 'armeabi','armeabi-v7a' // , 'arm64-v8a','x86', 'x86_64'
+        }
+
     }
 
     buildTypes {
@@ -34,6 +58,14 @@ android {
     androidExtensions {
         experimental = true
     }
+
+//    splits {
+//        abi {
+//            enable true
+//            reset()
+//            include 'armeabi-v7a' //如果想包含其他cpu平台使用的so，修改这里即可
+//        }
+//    }
 }
 
 dependencies {

@@ -1,15 +1,20 @@
 package com.example.firstprogram.pdf
 
+import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.pdf.PdfRenderer
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
 import android.os.ParcelFileDescriptor
+import android.provider.Browser
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.PagerAdapter
 import com.example.firstprogram.R
 import com.github.chrisbanes.photoview.PhotoView
@@ -19,6 +24,19 @@ import java.io.File
 /**
 * pdf 读取展示
  * 利用PdfRenderer类实现
+ * -dfview github 三方也不支持显示签名
+ * 缺点
+ * 盖章签名无法显示
+ *
+ * 1、google doc 在线阅读，基于webview，国内需翻墙访问（不可行）
+2、跳转设备中默认pdf app打开，前提需要手机安装了pdf 软件（可按需选择）
+3、内置 android-pdfview，基于原生native, apk增加约15~20M（可行，不过安装包有点大）
+4、内置 mupdf，基于原生native, 集成有点麻烦，增加约9M（可行，不过安装包稍有点大）
+5、内置 pdf.js，功能丰富，apk增加5M（基于Webview,性能低，js实现，功能定制复杂）
+6、使用x5内核，需要客户端完全使用x5内核（基于Webview,性能低，不能定制功能）
+
+ *
+ *
 * */
 
 class PdfReaderActivity : AppCompatActivity() {
@@ -37,10 +55,10 @@ class PdfReaderActivity : AppCompatActivity() {
         val heightPixels: Int = outMetrics.heightPixels
         pathStr = intent.getStringExtra("pathFile") ?: ""
 
-        openRender(widthPixels,heightPixels)
+        openRender(widthPixels, heightPixels)
     }
 
-    private fun openRender( widthPixels : Int, heightPixels:Int){
+    private fun openRender(widthPixels: Int, heightPixels: Int){
         //初始化PdfRender
         try {
             val file = File(pathStr)
@@ -48,7 +66,7 @@ class PdfReaderActivity : AppCompatActivity() {
             mDescriptor?.let {
                 mRenderer = PdfRenderer(it)
             }
-            view_pager.adapter = MyAdapter(mRenderer!!, this,widthPixels,heightPixels)
+            view_pager.adapter = MyAdapter(mRenderer!!, this, widthPixels, heightPixels)
         }catch (e: Exception){}
 
 
@@ -81,8 +99,10 @@ class PdfReaderActivity : AppCompatActivity() {
 如果 behavior 的值为 BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT ，那么当前选中的 Fragment 在 Lifecycle.State#RESUMED 状态 ，其他不可见的 Fragment 会被限制在 Lifecycle.State#STARTED 状态。
 
  * */
-class MyAdapter(private val mRendererPdf: PdfRenderer, val context: Context,
-                private val widthPixels : Int, private val heightPixels:Int) : PagerAdapter() {
+class MyAdapter(
+    private val mRendererPdf: PdfRenderer, val context: Context,
+    private val widthPixels: Int, private val heightPixels: Int
+) : PagerAdapter() {
 
     override fun getCount(): Int {
         return mRendererPdf.pageCount
@@ -113,4 +133,19 @@ class MyAdapter(private val mRendererPdf: PdfRenderer, val context: Context,
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return view === `object`
     }
+
+    //浏览器打开PDF
+
+    //浏览器打开PDF
+    fun openPDFInBrowser(context: Context, url: String?) {
+        val uri: Uri = Uri.parse(url)
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        intent.putExtra(Browser.EXTRA_APPLICATION_ID, context.packageName)
+        try {
+            context.startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            Log.w("error", "Activity was not found for intent, " + intent.toString())
+        }
+    }
+
 }
