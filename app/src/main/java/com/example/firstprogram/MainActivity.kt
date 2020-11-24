@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() , View.OnClickListener, OnEnvironmentCh
         module.setOnClickListener(this)
         env_change.setOnClickListener(this)
         autosize.setOnClickListener(this)
+        annotation.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
@@ -104,6 +105,10 @@ class MainActivity : AppCompatActivity() , View.OnClickListener, OnEnvironmentCh
             }
             R.id.autosize  -> {
                 val intent = Intent(this, AutoSizeActivity().javaClass)
+                startActivity(intent)
+            }
+            R.id.annotation -> {
+                val intent = Intent(this, AnnotationActivity().javaClass)
                 startActivity(intent)
             }
         }

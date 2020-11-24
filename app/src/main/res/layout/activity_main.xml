@@ -49,5 +49,11 @@
         android:text="autosize"
         />
 
+    <Button
+        android:id="@+id/annotation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="annotation"
+        />
 
 </LinearLayout>
