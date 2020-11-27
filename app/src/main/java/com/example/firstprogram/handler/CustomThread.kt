@@ -30,7 +30,7 @@ class CustomThread : Thread {
     }
 
     fun getHandler() : Handler? {
-        handler = object: Handler(Looper.myLooper()) {
+        handler = object: Handler(Looper.myLooper()!!) {
             override fun handleMessage(msg : Message) {
                 super.handleMessage(msg)
                 if (msg.what == 0) {

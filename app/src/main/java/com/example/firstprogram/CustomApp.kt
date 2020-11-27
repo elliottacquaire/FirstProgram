@@ -3,8 +3,11 @@ package com.example.firstprogram
 import android.app.Application
 import android.content.res.Configuration
 import com.alibaba.android.arouter.launcher.ARouter
+import com.orhanobut.logger.AndroidLogAdapter
+import com.orhanobut.logger.Logger
 import me.jessyan.autosize.AutoSizeConfig
 import me.jessyan.autosize.unit.Subunits
+
 
 class CustomApp : Application() {
     override fun onCreate() {
@@ -12,6 +15,8 @@ class CustomApp : Application() {
         initRouter()
         //对单位的自定义配置, 请在 App 启动时完成
         configUnits()
+
+        Logger.addLogAdapter(AndroidLogAdapter())
     }
 
     private fun configUnits() {

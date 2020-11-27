@@ -56,6 +56,7 @@ class PdfReaderActivity : AppCompatActivity() {
         pathStr = intent.getStringExtra("pathFile") ?: ""
 
         openRender(widthPixels, heightPixels)
+
     }
 
     private fun openRender(widthPixels: Int, heightPixels: Int){

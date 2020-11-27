@@ -36,6 +36,13 @@
         />
 
     <Button
+        android:id="@+id/pdfwebview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="pdfwebview"
+        />
+
+    <Button
         android:id="@+id/env_change"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,5 +62,13 @@
         android:layout_height="wrap_content"
         android:text="annotation"
         />
+
+    <Button
+        android:id="@+id/networkrequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="networkrequest"
+        />
+
 
 </LinearLayout>

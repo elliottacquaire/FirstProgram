@@ -11,6 +11,9 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.launcher.ARouter
 import com.example.firstprogram.autosize.AutoSizeActivity
+import com.example.firstprogram.pdf.PWebViewActivity
+import com.example.firstprogram.pdf.PdfReaderActivity
+import com.example.firstprogram.pdf.PdfWebViewActivity
 import com.xiaomai.environmentswitcher.EnvironmentSwitchActivity
 import com.xiaomai.environmentswitcher.EnvironmentSwitcher
 import com.xiaomai.environmentswitcher.bean.EnvironmentBean
@@ -33,9 +36,11 @@ class MainActivity : AppCompatActivity() , View.OnClickListener, OnEnvironmentCh
         btn_javaDesign.setOnClickListener(this)
         dispatch_touch_event.setOnClickListener(this)
         module.setOnClickListener(this)
+        pdfwebview.setOnClickListener(this)
         env_change.setOnClickListener(this)
         autosize.setOnClickListener(this)
         annotation.setOnClickListener(this)
+        networkrequest.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
@@ -100,6 +105,12 @@ class MainActivity : AppCompatActivity() , View.OnClickListener, OnEnvironmentCh
                 System.exit(0)
 
             }
+            R.id.pdfwebview -> {
+//                val intent = Intent(this, PWebViewActivity().javaClass)
+                val intent = Intent(this, PdfWebViewActivity().javaClass)
+//                val intent = Intent(this, PdfReaderActivity().javaClass)
+                startActivity(intent)
+            }
             R.id.env_change -> {
                 EnvironmentSwitchActivity.launch(this)
             }
@@ -111,6 +122,10 @@ class MainActivity : AppCompatActivity() , View.OnClickListener, OnEnvironmentCh
                 val intent = Intent(this, AnnotationActivity().javaClass)
                 startActivity(intent)
             }
+            R.id.networkrequest  -> {
+            val intent = Intent(this, NetWorkRequestActivity().javaClass)
+            startActivity(intent)
+        }
         }
     }
 
