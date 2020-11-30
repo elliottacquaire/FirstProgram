@@ -16,6 +16,8 @@ import kotlinx.android.synthetic.main.activity_pdf_web_view.*
  * 显示pdf 有一些问题
  */
 class PdfWebViewActivity : AppCompatActivity() {
+    private val downloadUrl = "https://pos.miller8.top/pos/test.pdf"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pdf_web_view)
@@ -34,10 +36,11 @@ class PdfWebViewActivity : AppCompatActivity() {
 
         webView.loadUrl(url)
 
-        openPDFInBrowser(
-            this,
-            Environment.getExternalStorageDirectory().toString() + "/MyDownLoad/invoice.pdf"
-        )
+        openPDFInBrowser(this,downloadUrl)
+//        openPDFInBrowser(
+//            this,
+//            Environment.getExternalStorageDirectory().toString() + "/MyDownLoad/invoice.pdf"
+//        )
     }
 
     private fun initWebSettings() {

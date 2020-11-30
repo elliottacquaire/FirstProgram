@@ -77,12 +77,18 @@ class JavaDesignActivity : AppCompatActivity(), View.OnClickListener {
 
                 val user = User()
                 val invocationHandler = MyInvocationHandler(user)
-                for (int in user.javaClass.interfaces){
-                    Log.i("aaa","-btn_javaDesign---${int.name}")
+                val javaIntad = ProxyHandler(user)
+                //Class[] interfaces 表示代理类需要实现的接口，这些接口中表示需要你拦截的方法
+                //比如目标类中实现了A，B两接口，但是你只需要拦截代理接口A的方法，那么这里写A接口就行了。
+                for (nt in user.javaClass.interfaces){
+                    Log.i("aaa","-btn_javaDesign---${nt.name}")
                 }
 
-                val userDor = Proxy.newProxyInstance(user.javaClass.classLoader,user.javaClass.interfaces,invocationHandler) as IUserDao
-                userDor.save()
+                val userDor1 = Proxy.newProxyInstance(user.javaClass.classLoader,user.javaClass.interfaces,invocationHandler) as IUserDao
+//                val result = userDor1.save()
+                userDor1.delete("projects")
+//                val userDor = Proxy.newProxyInstance(user.javaClass.classLoader,user.javaClass.interfaces,javaIntad) as IUserDao
+//                val result = userDor.save()
 //                userDor.delete("projects")
 
             }

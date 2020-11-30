@@ -108,7 +108,7 @@ class MainActivity : AppCompatActivity() , View.OnClickListener, OnEnvironmentCh
             R.id.pdfwebview -> {
 //                val intent = Intent(this, PWebViewActivity().javaClass)
                 val intent = Intent(this, PdfWebViewActivity().javaClass)
-//                val intent = Intent(this, PdfReaderActivity().javaClass)
+//                val intent = Intent(this, PdfReaderActivity().javaClass)//成功案例
                 startActivity(intent)
             }
             R.id.env_change -> {
