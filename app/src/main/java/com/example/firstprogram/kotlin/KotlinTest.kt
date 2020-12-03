@@ -1,7 +1,10 @@
 package com.example.firstprogram.kotlin
 
+import android.util.Log
 import com.example.firstprogram.design.BaseImpl
 import com.example.firstprogram.design.Derived
+import com.orhanobut.logger.Logger
+import okhttp3.Interceptor
 import java.util.concurrent.locks.Lock
 
 /**
@@ -95,9 +98,29 @@ class KotlinTest {
         }
     }
 
+
     //自定义高阶函数
     private fun resultOO(num1: Int,num2: Int,results:(Int,Int) -> Int) : Int{
         return results(num1,num2)
+    }
+
+    private fun testTT(name: String, daemon: Boolean): TestFactory = object : TestFactory {
+        override fun newThread(r: Runnable): Thread {
+            return Thread(r, name).apply {
+                isDaemon = daemon
+            }
+        }
+    }
+
+
+    private fun testNo(name: String, daemon: Boolean): TestFactory{
+        return object : TestFactory {
+            override fun newThread(r: Runnable): Thread {
+                return Thread(r, name).apply {
+                    isDaemon = daemon
+                }
+            }
+        }
     }
 
     fun main(args: Array<String>) {
@@ -111,5 +134,16 @@ class KotlinTest {
     //////////高阶函数/////////////////////////
     val result1 = resultOO(1,3){
         num1,num2 -> num1 + num2
+    }
+
+    fun testMult(){
+        val interceptors = mutableListOf<String>()
+        interceptors += "One"
+        interceptors += "two"
+        interceptors += "three"
+        interceptors += "four"
+        interceptors += "five"
+        interceptors += "six"
+        Logger.d(interceptors)
     }
 }

@@ -42,4 +42,12 @@
         android:layout_height="wrap_content"
         android:text="btn_pool_object"
         />
+
+    <Button
+        android:id="@+id/btn_chain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="责任链模式"
+        />
+
 </LinearLayout>
