@@ -7,22 +7,22 @@
     <uses-permission android:name="com.example.firstprogram.permission.LOCAL" />
     <uses-permission android:name="android.permission.INTERNET" /> <!-- When you invoke BaseDownloadTask#setWifiRequired(true), you need declare ACCESS_NETWORK_STATE permission -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".CustomApp"
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".pdf.PdfWebViewActivity"/>
-        <activity android:name=".pdf.PWebViewActivity"/>
+        <activity android:name=".BroadcastReceiver.BroadCastRActivity"/>
+        <activity android:name=".pdf.PdfWebViewActivity" />
+        <activity android:name=".pdf.PWebViewActivity" />
         <activity android:name=".NetWorkRequestActivity" />
         <activity android:name=".AnnotationActivity" />
         <activity android:name=".autosize.AutoSize1Activity" />
@@ -38,6 +38,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".BroadcastReceiver.AppInstallReceiver"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="com.example.firstprogram" />
+            </intent-filter>
+        </receiver>
 
         <service android:name=".service.MyService" />
         <service android:name=".service.MyIntentService" />

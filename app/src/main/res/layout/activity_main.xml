@@ -14,7 +14,12 @@
         android:layout_height="wrap_content"
         android:text="service"
        />
-
+    <Button
+        android:id="@+id/btn_broadcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="broadcastrecevive"
+        />
     <Button
         android:id="@+id/btn_javaDesign"
         android:layout_width="wrap_content"

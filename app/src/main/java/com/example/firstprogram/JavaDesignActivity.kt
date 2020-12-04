@@ -31,6 +31,7 @@ class JavaDesignActivity : AppCompatActivity(), View.OnClickListener {
 
     private var passTime = 0
 
+    ///////////////////////////////////////////////////////////
     private var sssdasd: String = "dddd"
         //        get() = "get test ss"  //固定值，永不变
         get() {
@@ -44,11 +45,11 @@ class JavaDesignActivity : AppCompatActivity(), View.OnClickListener {
     var setterVisibility: String = "abc"
         private set
 
-
+//////////////////////////////////////////////////////////////////////////////
     //创建handler
     val handler = object : Handler() {
         override fun handleMessage(msg: Message) {
-            super.handleMessage(msg);
+            super.handleMessage(msg)
             if (msg.what == 0x11) {
                 //更新ui
 
