@@ -15,6 +15,7 @@ import com.example.firstprogram.autosize.AutoSizeActivity
 import com.example.firstprogram.pdf.PWebViewActivity
 import com.example.firstprogram.pdf.PdfReaderActivity
 import com.example.firstprogram.pdf.PdfWebViewActivity
+import com.orhanobut.logger.Logger
 import com.xiaomai.environmentswitcher.EnvironmentSwitchActivity
 import com.xiaomai.environmentswitcher.EnvironmentSwitcher
 import com.xiaomai.environmentswitcher.bean.EnvironmentBean
@@ -22,7 +23,10 @@ import com.xiaomai.environmentswitcher.bean.ModuleBean
 import com.xiaomai.environmentswitcher.listener.OnEnvironmentChangeListener
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() , View.OnClickListener, OnEnvironmentChangeListener {
+/**
+ *启动另一个Activity然后finish，先调用旧Activity的onPause方法，然后调用新的Activity和onCreate->onStart->onResume方法，然后调用旧Activity的onStop->onDestroy方法。
+ */
+class MainActivity : AppCompatActivity(), View.OnClickListener, OnEnvironmentChangeListener {
 
     private val TAG = "MainActivity"
 
@@ -43,10 +47,11 @@ class MainActivity : AppCompatActivity() , View.OnClickListener, OnEnvironmentCh
         annotation.setOnClickListener(this)
         networkrequest.setOnClickListener(this)
         btn_broadcast.setOnClickListener(this)
+        btn_acitivyjump.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
-        when(p0?.id){
+        when (p0?.id) {
             R.id.btn_service -> {
                 val intent = Intent(this, ServicesActivity().javaClass)
                 startActivity(intent)
@@ -68,13 +73,13 @@ class MainActivity : AppCompatActivity() , View.OnClickListener, OnEnvironmentCh
                     ARouter.getInstance().build("/test/activity")
                         .withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                         .navigation()
-                },2000)
+                }, 2000)
 
                 Handler().postDelayed({
                     ARouter.getInstance().build("/test/activity")
                         .withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                         .navigation()
-                },3000)
+                }, 3000)
 
                 ARouter.getInstance().build("/test/activity")
                     .withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -120,7 +125,7 @@ class MainActivity : AppCompatActivity() , View.OnClickListener, OnEnvironmentCh
             R.id.env_change -> {
                 EnvironmentSwitchActivity.launch(this)
             }
-            R.id.autosize  -> {
+            R.id.autosize -> {
                 val intent = Intent(this, AutoSizeActivity().javaClass)
                 startActivity(intent)
             }
@@ -128,10 +133,20 @@ class MainActivity : AppCompatActivity() , View.OnClickListener, OnEnvironmentCh
                 val intent = Intent(this, AnnotationActivity().javaClass)
                 startActivity(intent)
             }
-            R.id.networkrequest  -> {
-            val intent = Intent(this, NetWorkRequestActivity().javaClass)
-            startActivity(intent)
-        }
+            R.id.networkrequest -> {
+                if (isFinishing) {
+                    Logger.d("finishing")
+                } else {
+                    Logger.d("no---finishing")
+                }
+                val intent = Intent(this, NetWorkRequestActivity().javaClass)
+                startActivity(intent)
+            }
+            //activity 启动模式 实例
+            R.id.btn_acitivyjump -> {
+                val intent = Intent(this, FirstActivity().javaClass)
+                startActivity(intent)
+            }
         }
     }
 

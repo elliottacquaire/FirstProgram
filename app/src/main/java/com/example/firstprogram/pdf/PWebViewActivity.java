@@ -46,6 +46,8 @@ public class PWebViewActivity extends AppCompatActivity {
         settings.setLoadWithOverviewMode(true);
         settings.setBuiltInZoomControls(true);
         settings.setDisplayZoomControls(false);
+
+        //js 调用Android 方法
         pdfViewerWeb.addJavascriptInterface(new AndroidtoJs(), "android");//AndroidtoJS类对象映射到js的test对象
         pdfViewerWeb.setWebViewClient(new WebViewClient() {
             @Override
@@ -73,6 +75,10 @@ public class PWebViewActivity extends AppCompatActivity {
                 });
             }
         }).start();
+
+        //webview 调用js 方法
+        pdfViewerWeb.loadUrl("javascript:funFromjs()");
+
     }
     public class AndroidtoJs extends Object {
 

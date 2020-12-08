@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.firstprogram">
+    <!--
+    如何让两个app运行在同一个进程里？
+    两个app要用相同的private key来签名
+    两个app的Manifest文件中要添加一样的属性 android:sharedUserId(设置成相同的UID)
+    -->
     <!-- job services -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.example.firstprogram.permission.LOCAL" />
@@ -20,7 +25,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".BroadcastReceiver.BroadCastRActivity"/>
+        <activity android:name=".ThirdActivity" android:launchMode="singleInstance"/>
+        <activity android:name=".SecondActivity" />
+        <activity android:name=".FirstActivity" />
+        <activity android:name=".BroadcastReceiver.BroadCastRActivity" />
         <activity android:name=".pdf.PdfWebViewActivity" />
         <activity android:name=".pdf.PWebViewActivity" />
         <activity android:name=".NetWorkRequestActivity" />
