@@ -7,6 +7,7 @@ import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import me.jessyan.autosize.AutoSizeConfig
 import me.jessyan.autosize.unit.Subunits
+import okhttp3.HttpUrl.Companion.toHttpUrl
 
 
 class CustomApp : Application() {
@@ -17,6 +18,15 @@ class CustomApp : Application() {
         configUnits()
 
         Logger.addLogAdapter(AndroidLogAdapter())
+
+//        Environment.init(
+//            this,
+//            Environment("QA", "https://api.apiopen.top/".toHttpUrl()),
+//            Environment("STAGING", "https://www.staging.com".toHttpUrl()),
+//            Environment("RELEASE", "https://www.release.com".toHttpUrl())
+//        )
+
+//        BlockCanary.install(this, AppBlockCanaryContext()).start()
     }
 
     private fun configUnits() {

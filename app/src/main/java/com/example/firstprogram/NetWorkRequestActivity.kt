@@ -1,12 +1,14 @@
 package com.example.firstprogram
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.firstprogram.retrofit2.*
 import com.orhanobut.logger.Logger
+import com.readystatesoftware.chuck.ChuckInterceptor
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -151,11 +153,16 @@ class NetWorkRequestActivity : AppCompatActivity(),View.OnClickListener {
                     })
                 httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
 
+
+//                val interceptor = HostInterceptor(this)
+
                 val okhttpClient = OkHttpClient.Builder()
                     .retryOnConnectionFailure(true)//设置重连
                     .connectTimeout(15, TimeUnit.SECONDS)
                     .callTimeout(15, TimeUnit.SECONDS)
                     .addNetworkInterceptor(httpLoggingInterceptor)//网络拦截器（打印信息更丰富，消息实体内容长度类型等）
+//                    .addInterceptor(interceptor)
+                    .addInterceptor(ChuckInterceptor(applicationContext).showNotification(false))  //查看网络请求
                     .build()
 
                 //有没有OkHttpClient 都可以  可以单独用 Retrofit
