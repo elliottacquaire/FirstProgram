@@ -3,6 +3,7 @@ package com.example.firstprogram
 import android.app.Application
 import android.content.res.Configuration
 import com.alibaba.android.arouter.launcher.ARouter
+import com.didichuxing.doraemonkit.DoraemonKit
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import me.jessyan.autosize.AutoSizeConfig
@@ -18,6 +19,8 @@ class CustomApp : Application() {
         configUnits()
 
         Logger.addLogAdapter(AndroidLogAdapter())
+
+        DoraemonKit.install(this);
 
 //        Environment.init(
 //            this,

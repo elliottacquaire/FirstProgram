@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'com.didi.dokit'
+
 kapt {
     arguments {
         arg("AROUTER_MODULE_NAME", project.getName())
@@ -188,4 +190,10 @@ dependencies {
 
     ////查看网络请求
     debugImplementation 'com.github.Commit451:Hyperion-Chuck:1.1.2'
+
+
+    //DoKit
+    debugImplementation "com.didichuxing.doraemonkit:doraemonkit:3.1.3"
+    releaseImplementation "com.didichuxing.doraemonkit:doraemonkit-no-op:3.1.3"
+
 }
