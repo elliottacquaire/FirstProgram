@@ -1,7 +1,9 @@
 package com.example.firstprogram.design
 
 import android.util.Log
+import androidx.annotation.Keep
 
+@Keep
 class User : IUserDao {
     private val TAG = "aaa"
     override fun save(): Int {

@@ -25,7 +25,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".ThirdActivity" android:launchMode="singleInstance"/>
+        <activity android:name=".CustomViewActivity"></activity>
+        <activity android:name=".EventBugActivity" />
+        <activity
+            android:name=".ThirdActivity"
+            android:launchMode="singleInstance" />
         <activity android:name=".SecondActivity" />
         <activity android:name=".FirstActivity" />
         <activity android:name=".BroadcastReceiver.BroadCastRActivity" />

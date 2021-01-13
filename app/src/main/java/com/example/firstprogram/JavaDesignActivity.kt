@@ -31,6 +31,7 @@ class JavaDesignActivity : AppCompatActivity(), View.OnClickListener {
 
     private var passTime = 0
 
+
     ///////////////////////////////////////////////////////////
     private var sssdasd: String = "dddd"
         //        get() = "get test ss"  //固定值，永不变

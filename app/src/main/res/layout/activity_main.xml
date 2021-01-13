@@ -82,5 +82,11 @@
         android:text="activity jump"
         />
 
+    <Button
+        android:id="@+id/btn_customview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="custom view activity"
+        />
 
 </LinearLayout>

@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, OnEnvironmentCha
         networkrequest.setOnClickListener(this)
         btn_broadcast.setOnClickListener(this)
         btn_acitivyjump.setOnClickListener(this)
+        btn_customview.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
@@ -145,6 +146,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, OnEnvironmentCha
             //activity 启动模式 实例
             R.id.btn_acitivyjump -> {
                 val intent = Intent(this, FirstActivity().javaClass)
+                startActivity(intent)
+            }
+            R.id.btn_customview -> {
+                val intent = Intent(this, CustomViewActivity().javaClass)
                 startActivity(intent)
             }
         }
