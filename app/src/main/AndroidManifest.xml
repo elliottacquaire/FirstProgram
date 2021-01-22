@@ -25,7 +25,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".CustomViewActivity"></activity>
+        <activity android:name=".EventBusActivity"></activity>
+        <activity android:name=".CustomViewActivity" />
         <activity android:name=".EventBugActivity" />
         <activity
             android:name=".ThirdActivity"

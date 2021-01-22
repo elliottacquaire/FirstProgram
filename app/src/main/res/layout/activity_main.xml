@@ -89,4 +89,11 @@
         android:text="custom view activity"
         />
 
+    <Button
+        android:id="@+id/btn_eventbus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="custom _eventbus"
+        />
+
 </LinearLayout>

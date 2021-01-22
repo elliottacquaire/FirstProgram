@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, OnEnvironmentCha
         btn_broadcast.setOnClickListener(this)
         btn_acitivyjump.setOnClickListener(this)
         btn_customview.setOnClickListener(this)
+        btn_eventbus.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
@@ -150,6 +151,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, OnEnvironmentCha
             }
             R.id.btn_customview -> {
                 val intent = Intent(this, CustomViewActivity().javaClass)
+                startActivity(intent)
+            }
+            R.id.btn_eventbus -> {
+                val intent = Intent(this, EventBusActivity().javaClass)
                 startActivity(intent)
             }
         }

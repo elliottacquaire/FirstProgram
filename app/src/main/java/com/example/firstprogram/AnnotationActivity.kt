@@ -7,6 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.firstprogram.annotation.AnimationTest
 import com.example.firstprogram.annotation.MyAnnotation
 import com.example.firstprogram.annotation.MyAnnotation1
+import com.example.firstprogram.eventbus.CustomEven
+import com.example.firstprogram.eventbus.CustomEventBus
+import com.example.firstprogram.eventbus.CustomStickEvent
+import com.example.firstprogram.eventbus.Subscrobe
+import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.activity_annotation.*
 
 class AnnotationActivity : AppCompatActivity(), View.OnClickListener {
@@ -14,8 +19,12 @@ class AnnotationActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_annotation)
 
+        CustomEventBus.register(this)
+
         clicl.setOnClickListener(this)
         click2.setOnClickListener(this)
+
+        customEventBus.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -54,6 +63,20 @@ class AnnotationActivity : AppCompatActivity(), View.OnClickListener {
             R.id.click2 -> {
 
             }
+            R.id.customEventBus -> {
+                CustomEventBus.postEvent(false)
+            }
+
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        CustomEventBus.unRegister(this)
+    }
+
+    @Subscrobe(threadModel = "main", isThicky = true)
+    fun sendEventBusMessage(event: CustomStickEvent) {
+        Logger.d("---event bus message handle ${event.name}--")
     }
 }
