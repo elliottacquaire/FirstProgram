@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.firstprogram.retrofit2.*
 import com.orhanobut.logger.Logger
 import com.readystatesoftware.chuck.ChuckInterceptor
@@ -163,6 +164,7 @@ class NetWorkRequestActivity : AppCompatActivity(),View.OnClickListener {
                     .addNetworkInterceptor(httpLoggingInterceptor)//网络拦截器（打印信息更丰富，消息实体内容长度类型等）
 //                    .addInterceptor(interceptor)
                     .addInterceptor(ChuckInterceptor(applicationContext).showNotification(false))  //查看网络请求
+                    .addInterceptor(ChuckerInterceptor.Builder(applicationContext).build())
                     .build()
 
                 //有没有OkHttpClient 都可以  可以单独用 Retrofit
