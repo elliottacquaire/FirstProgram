@@ -67,26 +67,33 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, OnEnvironmentCha
                 startActivity(intent)
             }
             R.id.dispatch_touch_event -> {
-                val intent = Intent(this, DispatchTouchEventActivity().javaClass)
-                startActivity(intent)
+//                val intent = Intent(this, DispatchTouchEventActivity().javaClass)
+//                startActivity(intent)
+//
+//                //配合activity启动模式singleTask，可启动一次，重复调用 onNewIntent()
+//                Handler().postDelayed({
+//                    ARouter.getInstance().build("/test/activity")
+//                        .withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+//                        .navigation()
+//                }, 2000)
+//
+//                Handler().postDelayed({
+//                    ARouter.getInstance().build("/test/activity")
+//                        .withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+//                        .navigation()
+//                }, 3000)
 
-                //配合activity启动模式singleTask，可启动一次，重复调用 onNewIntent()
-                Handler().postDelayed({
-                    ARouter.getInstance().build("/test/activity")
-                        .withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .navigation()
-                }, 2000)
+//                ARouter.getInstance().build("/test/activity")
+//                    .withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+//                    .navigation(this)
 
-                Handler().postDelayed({
-                    ARouter.getInstance().build("/test/activity")
-                        .withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .navigation()
-                }, 3000)
-
-                ARouter.getInstance().build("/test/activity")
+                ARouter.getInstance().build("/first/firstA")
                     .withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                     .navigation(this)
 
+//                ARouter.getInstance().build("/app/first")
+//                    .withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+//                    .navigation(this)
 
             }
             R.id.module -> {

@@ -1,3 +1,5 @@
+include ':baselib'
+include ':firstlibrary'
 include ':mylibrary'
 include ':app'
 rootProject.name = "FirstProgram"

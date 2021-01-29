@@ -114,6 +114,7 @@ dependencies {
 
     //引用library
     implementation project(":mylibrary")
+    implementation project(":firstlibrary")
 
     //arouter
     kapt "com.alibaba:arouter-compiler:1.2.2"
