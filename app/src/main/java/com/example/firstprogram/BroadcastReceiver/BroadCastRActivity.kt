@@ -13,6 +13,7 @@ class BroadCastRActivity : AppCompatActivity() {
 
     private var receiver : BroadcastReceiver? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_broad_cast_r)
@@ -20,6 +21,14 @@ class BroadCastRActivity : AppCompatActivity() {
         receiver = AppInstallReceiver()
 
         initReceiver()
+
+        //注册“网络变化”的广播接收器
+        //注册“网络变化”的广播接收器
+        val intentFilters = IntentFilter()
+        intentFilters.addAction("android.net.conn.CONNECTIVITY_CHANGE")
+        val networkChangeReceiver = ArouterReceiver()
+        registerReceiver(networkChangeReceiver, intentFilters)
+
     }
 
 
