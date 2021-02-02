@@ -16,10 +16,12 @@ class ArouterReceiver : BroadcastReceiver() {
         val networkInfo = manager!!.activeNetworkInfo
         if (networkInfo != null && networkInfo.isAvailable) {
             Toast.makeText(context, "网络可用", Toast.LENGTH_SHORT).show()
+            MessageManager.messageARouter.onNotification(context, "可用", "summary", "extraMap")
         } else {
             Toast.makeText(context, "网络不可用", Toast.LENGTH_SHORT).show()
+            MessageManager.messageARouter.onNotification(context, "不可用", "summary111", "extraMap")
         }
 
-        MessageManager.messageARouter.onNotification(context, "title", "summary", "extraMap")
+//        MessageManager.messageARouter.onNotification(context, "title", "summary", "extraMap")
     }
 }

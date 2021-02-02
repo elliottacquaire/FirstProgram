@@ -1,7 +1,9 @@
 package com.example.firstprogram
 
+import android.app.Activity
 import android.app.Application
 import android.content.res.Configuration
+import android.os.Bundle
 import com.alibaba.android.arouter.launcher.ARouter
 import com.didichuxing.doraemonkit.DoraemonKit
 import com.orhanobut.logger.AndroidLogAdapter
@@ -30,6 +32,9 @@ class CustomApp : Application() {
 //        )
 
 //        BlockCanary.install(this, AppBlockCanaryContext()).start()
+
+
+        lifecycle()
     }
 
     private fun configUnits() {
@@ -85,5 +90,40 @@ class CustomApp : Application() {
             ARouter.openDebug() // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
         ARouter.init(this)
+    }
+
+    private fun lifecycle() {
+        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks{
+            override fun onActivityPaused(activity: Activity) {
+
+            }
+
+            override fun onActivityStarted(activity: Activity) {
+
+            }
+
+            override fun onActivityDestroyed(activity: Activity) {
+                Logger.d("all acitivty Destroyed")
+            }
+
+            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
+
+            }
+
+            override fun onActivityStopped(activity: Activity) {
+
+                Logger.d("all acitivty stoped")
+
+            }
+
+            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+
+            }
+
+            override fun onActivityResumed(activity: Activity) {
+
+            }
+
+        })
     }
 }

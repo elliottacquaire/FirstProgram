@@ -13,6 +13,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.firstprogram.FirstActivity
 import com.example.firstprogram.R
 import com.orhanobut.logger.Logger
+import java.util.*
 
 @Route(path = "/main/push")
 class NoticifyMessage : IPorscheMessageReceiver {
@@ -23,7 +24,7 @@ class NoticifyMessage : IPorscheMessageReceiver {
         extraMap: String?
     ) {
         Logger.d("onNotification-------$title------")
-        showNotification(context,message = "ddd",_title = "tttt")
+        showNotification(context,message = title!!,_title = summary!!)
     }
 
     override fun onNotificationOpened(
@@ -68,15 +69,16 @@ class NoticifyMessage : IPorscheMessageReceiver {
 
         val builder = NotificationCompat.Builder(context, "CHANNEL_ID")
             .setSmallIcon(R.mipmap.ic_launcher)
-            .setContentTitle("textTitle")
-            .setContentText("textContent")
+            .setContentTitle(message)
+            .setContentText(_title)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
 
         with(NotificationManagerCompat.from(context)) {
             // notificationId is a unique int for each notification that you must define
-            notify(1, builder.build())
+//            notify(1, builder.build())
+            notify(getRandomInt(), builder.build())
         }
 
 
@@ -96,6 +98,10 @@ class NoticifyMessage : IPorscheMessageReceiver {
             val notificationManager: NotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
+    }
+
+    fun getRandomInt(): Int {
+        return Random().nextInt(Int.MAX_VALUE - 100) + 100
     }
 
 }
