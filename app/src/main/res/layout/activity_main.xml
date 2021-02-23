@@ -96,4 +96,11 @@
         android:text="custom _eventbus"
         />
 
+    <Button
+        android:id="@+id/btn_thread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="custom thread change"
+        />
+
 </LinearLayout>

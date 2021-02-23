@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.firstprogram">
-
     <!--
     如何让两个app运行在同一个进程里？
     两个app要用相同的private key来签名
@@ -26,11 +25,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".ThreadChangeActivity"></activity>
 
         <receiver
             android:name=".BroadcastReceiver.ArouterReceiver"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
 
         <activity android:name=".EventBusActivity" />
         <activity android:name=".CustomViewActivity" />

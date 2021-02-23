@@ -15,6 +15,7 @@ class EventBusActivity : AppCompatActivity() ,View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_bus)
+
         CustomEventBus.register(this)
 
         customEventBusss.setOnClickListener(this)
